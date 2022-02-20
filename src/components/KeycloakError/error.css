@@ -1,0 +1,31 @@
+.keycloak-container-error {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  height: 100vh;
+}
+
+span {
+  font-size: 1.3rem;
+  color: #bba755;
+}
+
+.btn-tentar-novamente {
+  border-radius: 5px;
+  border: 1px solid #bba755;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  color: #0d3b2f;
+}
+
+.btn-tentar-novamente:hover {
+  cursor: pointer;
+  background-color: rgb(13, 59, 47, 0.8);
+  color: #fff;
+  border: none;
+  transition: background-color 1000ms linear;
+}

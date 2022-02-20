@@ -1,16 +1,11 @@
-import * as React from "react";
-import { ButtonProps } from "./button.types";
+import React from "react";
+import './Button.css'
+export interface ButtonProps {
+  label: string;
+}
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  text,
-  disabled,
-  onClick,
-}) => {
-  return (
-    <button type="button" disabled={disabled} onClick={onClick}>
-      {text}
-    </button>
-  );
+const Button = (props: ButtonProps) => {
+  return <button className="my-btn">{props.label}</button>;
 };
 
 export default Button;
