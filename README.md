@@ -29,7 +29,7 @@ import App from "pages/App";
 
 import { KeycloakContaier } from "react-keycloak-oidc-ts";
 
-// Cnfigurações
+// Settings keycloak
 const configKeycloak = {
   clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID ?? "",
   secret: process.env.REACT_APP_KEYCLOAK_SECRET ?? "",
