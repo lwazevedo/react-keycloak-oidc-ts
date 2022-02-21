@@ -38,6 +38,8 @@ const DEFAULT_VALUE = {
     isLoggedIn: false,
     cooperativa: 0,
     userName: "",
+    name: "",
+    token: "",
   },
 };
 
