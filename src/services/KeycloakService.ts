@@ -2,7 +2,6 @@ import Keycloak from "../lib/Keycloak";
 
 class KeycloakService {
   private _kc: any = {};
-  private _window: any = window as any;
 
   constructor(
     clientId: string,
@@ -22,17 +21,6 @@ class KeycloakService {
         end_session_endpoint,
       },
     });
-    // this._kc = new this._window.Keycloak({
-    //   clientId: clientId,
-    //   credentials: {
-    //     secret,
-    //   },
-    //   oidcProvider: {
-    //     authorization_endpoint,
-    //     token_endpoint,
-    //     end_session_endpoint,
-    //   },
-    // });
   }
 
   start(): any {
@@ -76,6 +64,10 @@ class KeycloakService {
 
   get cooperativa(): number {
     return Number(this._kc.tokenParsed?.preferred_username.split(".")[1]);
+  }
+
+  get name(): string {
+    return this._kc.tokenParsed?.preferred_username.split(".")[0];
   }
 
   get userName(): string {

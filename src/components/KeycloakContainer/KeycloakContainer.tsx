@@ -17,12 +17,12 @@ const initialState = {
 };
 
 const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
-  clientId,
-  secret,
-  authorization_endpoint,
-  token_endpoint,
-  end_session_endpoint,
-  rederElement: Element,
+  clientId = "",
+  secret = "",
+  authorization_endpoint = "",
+  token_endpoint = "",
+  end_session_endpoint = "",
+  renderElement: Element = null,
   errorConfig = {},
   renderLoading = true,
 }) => {
@@ -58,6 +58,8 @@ const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
                 isLoggedIn: service.isLoggedIn,
                 cooperativa: service.cooperativa,
                 userName: service.userName,
+                name: service.name,
+                token: service.token,
               },
             });
           else {

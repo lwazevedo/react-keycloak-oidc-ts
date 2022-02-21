@@ -54,7 +54,7 @@ const renderLoading = false;
 
 
 // This render container keycloak
-const renderKeycloakLogin = () = <KeycloakContaier {...configKeycloak} rederElement={App} erroConfig={erroConfig} renderLoading={renderLoading}/>
+const renderKeycloakLogin = () = <KeycloakContaier {...configKeycloak} renderElement={App} erroConfig={erroConfig} renderLoading={renderLoading}/>
 
 ReactDOM.render(
   <React.StrictMode>

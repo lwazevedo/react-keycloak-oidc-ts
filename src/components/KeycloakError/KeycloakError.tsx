@@ -20,8 +20,8 @@ const KeycloakError: React.FunctionComponent<IKeycloakErrorProps> = ({
   };
   return (
     <div className="keycloak-container-error">
-      <span>{errorTitle}</span>
-      <span>{errorMsg}</span>
+      <span className="keycloak-text">{errorTitle}</span>
+      <span className="keycloak-text">{errorMsg}</span>
       <button onClick={onHandleTryAgain} className="btn-try-again">
         {errorBtnTitle}
       </button>

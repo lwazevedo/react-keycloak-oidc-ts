@@ -41,6 +41,8 @@ export interface IKeycloakInstance {
   isLoggedIn: boolean;
   cooperativa: number;
   userName: string;
+  name: string;
+  token: string;
 }
 
 export interface IKeycloakContaierProps {
@@ -49,7 +51,7 @@ export interface IKeycloakContaierProps {
   authorization_endpoint: string;
   token_endpoint: string;
   end_session_endpoint: string;
-  rederElement: React.ElementType;
+  renderElement: React.ElementType;
   errorConfig?: IKeycloakErrorProps | {};
   renderLoading?: boolean;
 }
