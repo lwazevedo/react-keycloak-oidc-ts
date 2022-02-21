@@ -1,3 +1,12 @@
+import { IKeycloakErrorProps } from "../components/KeycloakError/KeycloakError";
+
+export interface IStateKeycloakContainer {
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  isError: boolean;
+  kc: IKeycloakInstance | {};
+}
+
 export interface ITokenParsed {
   acr: string;
   auth_time: number;
@@ -41,4 +50,6 @@ export interface IKeycloakContaierProps {
   token_endpoint: string;
   end_session_endpoint: string;
   rederElement: React.ElementType;
+  errorConfig?: IKeycloakErrorProps | {};
+  renderLoading?: boolean;
 }

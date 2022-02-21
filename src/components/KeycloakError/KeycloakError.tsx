@@ -2,23 +2,28 @@ import * as React from "react";
 import "./error.css";
 import { useKeycloak } from "../../hooks";
 
-interface IKeycloakErrorProps {}
+export interface IKeycloakErrorProps {
+  errorTitle?: string;
+  errorMsg?: string;
+  errorBtnTitle?: string;
+}
 
-const KeycloakError: React.FunctionComponent<IKeycloakErrorProps> = (props) => {
+const KeycloakError: React.FunctionComponent<IKeycloakErrorProps> = ({
+  errorTitle = "An unexpected error occurred!",
+  errorMsg = "If the problem persists, please contact your IT team!",
+  errorBtnTitle = "Try again",
+}) => {
   const { isLoggedIn, logout } = useKeycloak();
-  const onHandleTentarNovamente = () => {
+  const onHandleTryAgain = () => {
     if (isLoggedIn) logout();
     else window.location.reload();
   };
   return (
     <div className="keycloak-container-error">
-      <span>Ocorreu um erro inesperado!</span>
-      <span>Se persistir, favor entrar em contato com a TI!</span>
-      <button
-        onClick={onHandleTentarNovamente}
-        className="btn-tentar-novamente"
-      >
-        Tentar novamente
+      <span>{errorTitle}</span>
+      <span>{errorMsg}</span>
+      <button onClick={onHandleTryAgain} className="btn-try-again">
+        {errorBtnTitle}
       </button>
     </div>
   );

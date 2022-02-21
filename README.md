@@ -40,10 +40,25 @@ const configKeycloak = {
     process.env.REACT_APP_KEYCLOAK_END_SESSION_ENDPOINT ?? "",
 };
 
+// This error setting is for when the keycloak login screen cannot be loaded. 
+// It`s not mandatory - It has default configuration.
+const erroConfig = {
+  errorTitle: 'YOUR ERROR TITLE';
+  errorMsg: 'YOUR ERROR MESSAGE';
+  errorBtnTitle: 'YOUR BUTTON TITLE';
+}
+
+// This setting indicates whether you want the loading component to be rendered before the keycloak login screen.
+// It`s not mandatory - deafault true
+const renderLoading = false;
+
+
+// This render container keycloak
+const renderKeycloakLogin = () = <KeycloakContaier {...configKeycloak} rederElement={App} erroConfig={erroConfig} renderLoading={renderLoading}/>
+
 ReactDOM.render(
   <React.StrictMode>
-    //Container keycloak
-    <KeycloakContaier {...configKeycloak} rederElement={App} />
+    {renderKeycloakLogin()}
   </React.StrictMode>,
   document.getElementById("root")
 );

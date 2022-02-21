@@ -4,15 +4,14 @@ import KeycloakError from "../KeycloakError";
 import KeycloakLoading from "../KeycloakLoading";
 
 import { KeycloakProvider } from "../../contexts/KeycloakContext";
-import { IKeycloakContaierProps, IKeycloakInstance } from "../../interfaces";
+import {
+  IKeycloakContaierProps,
+  IStateKeycloakContainer,
+} from "../../interfaces";
 
-interface IStateContainer {
-  isLoggedIn: boolean;
-  isError: boolean;
-  kc: IKeycloakInstance | {};
-}
 const initialState = {
   isLoggedIn: false,
+  isLoading: false,
   isError: false,
   kc: {},
 };
@@ -24,11 +23,15 @@ const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
   token_endpoint,
   end_session_endpoint,
   rederElement: Element,
+  errorConfig = {},
+  renderLoading = true,
 }) => {
-  const [state, setState] = React.useState<IStateContainer>(initialState);
+  const [state, setState] =
+    React.useState<IStateKeycloakContainer>(initialState);
 
   React.useEffect(() => {
     const init = async () => {
+      setState({ ...state, isLoading: true });
       const service = new KeycloakService(
         clientId,
         secret,
@@ -42,6 +45,7 @@ const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
           if (auth)
             setState({
               isLoggedIn: auth,
+              isLoading: false,
               isError: false,
               kc: {
                 tokenParsed: service.tokenParsed,
@@ -56,10 +60,14 @@ const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
                 userName: service.userName,
               },
             });
-          else service.login();
+          else {
+            service.login();
+            setState(initialState);
+          }
         })
         .catch((error: any) => {
-          setState({ isLoggedIn: false, isError: true, kc: {} });
+          console.error(error);
+          setState({ ...initialState, isError: true });
         });
     };
     init();
@@ -71,12 +79,17 @@ const KeycloakContaier: React.FunctionComponent<IKeycloakContaierProps> = ({
     end_session_endpoint,
   ]);
 
-  if (state.isError) return <KeycloakError />;
-  if (!state.isLoggedIn) return <KeycloakLoading />;
+  if (state.isError) return <KeycloakError {...errorConfig} />;
+  if (renderLoading && state.isLoading && !state.isLoggedIn)
+    return <KeycloakLoading />;
 
   return (
     <KeycloakProvider state={state.kc}>
-      {Element ? <Element /> : <KeycloakError />}
+      {!state.isLoading && state.isLoggedIn && Element ? (
+        <Element />
+      ) : (
+        <KeycloakError {...errorConfig} />
+      )}
     </KeycloakProvider>
   );
 };

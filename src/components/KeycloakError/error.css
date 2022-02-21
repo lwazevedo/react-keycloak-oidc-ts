@@ -13,7 +13,7 @@ span {
   color: #bba755;
 }
 
-.btn-tentar-novamente {
+.btn-try-again {
   border-radius: 5px;
   border: 1px solid #bba755;
   font-size: 1rem;
@@ -22,7 +22,7 @@ span {
   color: #0d3b2f;
 }
 
-.btn-tentar-novamente:hover {
+.btn-try-again:hover {
   cursor: pointer;
   background-color: rgb(13, 59, 47, 0.8);
   color: #fff;
