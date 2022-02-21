@@ -1,6 +1,6 @@
 {
   "name": "react-keycloak-oidc-ts",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "keycloak integration ui",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -27,14 +27,12 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "rollup-plugin-sourcemaps": "^0.6.3"
   },
   "peerDependencies": {
     "base64-js": "^1.5.1",
     "js-sha256": "^0.9.0",
     "react": "^17.0.2"
-  },
-  "dependencies": {
-    "react-keycloak-oidc-ts": "^1.0.5"
   }
 }
