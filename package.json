@@ -1,6 +1,6 @@
 {
   "name": "react-keycloak-oidc-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "keycloak integration ui",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -16,6 +16,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/lwazevedo/react-keycloak-oidc-ts.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
