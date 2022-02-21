@@ -1,9 +1,13 @@
 import React, { createContext } from "react";
 import { IKeycloakInstance } from "../interfaces";
 
-type propsContext = {
+// type propsContext = {
+//   state: IKeycloakInstance;
+// };
+
+interface ContextProps {
   state: IKeycloakInstance;
-};
+}
 
 const DEFAULT_VALUE = {
   state: {
@@ -43,7 +47,7 @@ const DEFAULT_VALUE = {
   },
 };
 
-const KeycloakContext = createContext<propsContext>(DEFAULT_VALUE);
+const KeycloakContext = createContext<ContextProps>(DEFAULT_VALUE);
 
 interface KeycloakProviderProps {
   children: React.ReactNode;
