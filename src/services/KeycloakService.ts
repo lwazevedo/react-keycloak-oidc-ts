@@ -1,7 +1,8 @@
-import Keycloak from "../lib/Keycloak";
+import { ITokenParsed } from "../interfaces";
+import Keycloak from "../lib/keycloak";
 
 class KeycloakService {
-  private _kc: any = {};
+  private _kc: Keycloak;
 
   constructor(
     clientId: string,
@@ -31,30 +32,30 @@ class KeycloakService {
     });
   }
 
-  get tokenParsed(): any {
+  get tokenParsed(): ITokenParsed | undefined {
     return this._kc.tokenParsed;
   }
 
-  get refreshToken(): string {
+  get refreshToken(): string | undefined {
     return this._kc.refreshToken;
   }
-  get hasRealmRole(): any {
+  get hasRealmRole(): Function {
     return this._kc.hasRealmRole;
   }
 
-  get hasResourceRole(): any {
+  get hasResourceRole(): Function {
     return this._kc.hasResourceRole;
   }
 
-  get clearToken(): void {
+  get clearToken(): Function {
     return this._kc.clearToken;
   }
 
-  get logout(): void {
+  get logout(): Function {
     return this._kc.logout;
   }
 
-  get updateToken(): void {
+  get updateToken(): Function {
     return this._kc.updateToken;
   }
 
@@ -74,7 +75,7 @@ class KeycloakService {
     return this._kc.tokenParsed?.preferred_username;
   }
 
-  get token(): string {
+  get token(): string | undefined {
     return this._kc.token;
   }
 

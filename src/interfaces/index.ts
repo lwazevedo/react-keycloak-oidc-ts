@@ -7,27 +7,27 @@ export interface IStateKeycloakContainer {
   kc: IKeycloakInstance | {};
 }
 
-export interface ITokenParsed {
-  acr: string;
-  auth_time: number;
-  azp: string;
-  cd_user_system: string;
-  distinguishedName: string;
-  email_verified: boolean;
-  exp: string;
-  given_name: string;
-  iat: string;
-  iss: string;
-  jti: string;
-  locale: string;
-  name: string;
-  nbf: number;
-  preferred_username: string;
+export interface IKeycloakResourceAccess {
+  [key: string]: IKeycloakRoles;
+}
+
+export interface IKeycloakRoles {
   roles: string[];
-  scope: string;
-  session_state: string;
-  sub: string;
-  typ: string;
+}
+export interface ITokenParsed {
+  iss?: string;
+  sub?: string;
+  aud?: string;
+  exp?: number;
+  iat?: number;
+  auth_time?: number;
+  nonce?: string;
+  acr?: string;
+  amr?: string;
+  azp?: string;
+  session_state?: string;
+  realm_access?: IKeycloakRoles;
+  resource_access?: IKeycloakResourceAccess;
 }
 
 export interface IKeycloakInstance {
